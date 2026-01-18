@@ -1,5 +1,5 @@
 # Build Stage
-FROM node:16-alpine as build-stage
+FROM node:16-alpine AS build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -19,7 +19,7 @@ ENV VUE_FACEBOOK_APP_ID=$VUE_FACEBOOK_APP_ID
 RUN npx quasar build
 
 # Production Stage
-FROM nginx:stable-alpine as production-stage
+FROM nginx:stable-alpine AS production-stage
 COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
