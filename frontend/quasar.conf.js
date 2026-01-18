@@ -54,12 +54,14 @@ module.exports = function (ctx) {
       // Suppress Sass deprecation warnings (especially for Quasar v1 + Dart Sass)
       sassLoaderOptions: {
         sassOptions: {
-          quietDeps: true
+          quietDeps: true,
+          silenceDeprecations: ['legacy-js-api']
         }
       },
       scssLoaderOptions: {
         sassOptions: {
-          quietDeps: true
+          quietDeps: true,
+          silenceDeprecations: ['legacy-js-api']
         }
       },
 
