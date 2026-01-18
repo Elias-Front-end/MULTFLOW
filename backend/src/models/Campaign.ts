@@ -50,8 +50,9 @@ class Campaign extends Model<Campaign> {
   get mediaUrl(): string | null {
     const value = this.getDataValue("mediaUrl");
     if (value && value !== "null") {
-      const { BACKEND_URL } = process.env;
-      return `${BACKEND_URL}:${process.env.PROXY_PORT}/public/${value}`;
+      const { BACKEND_URL, PROXY_PORT } = process.env;
+      const port = PROXY_PORT ? `:${PROXY_PORT}` : "";
+      return `${BACKEND_URL}${port}/public/${value}`;
     }
     return null;
   }

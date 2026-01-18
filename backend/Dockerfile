@@ -11,7 +11,7 @@ RUN apt-get update \
   --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* && npm install pm2@latest -g
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV NODE_ENV=dev
 ENV CHROME_BIN=google-chrome-stable
 

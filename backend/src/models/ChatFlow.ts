@@ -39,7 +39,8 @@ class ChatFlow extends Model<ChatFlow> {
               const { BACKEND_URL, PROXY_PORT } = process.env;
               const file = item.data.mediaUrl;
               item.data.fileName = file;
-              item.data.mediaUrl = `${BACKEND_URL}:${PROXY_PORT}/public/${file}`;
+              const port = PROXY_PORT ? `:${PROXY_PORT}` : "";
+              item.data.mediaUrl = `${BACKEND_URL}${port}/public/${file}`;
             }
           }
         }

@@ -46,9 +46,10 @@ class MessagesOffLine extends Model<MessagesOffLine> {
   @Column(DataType.STRING)
   get mediaUrl(): string | null {
     if (this.getDataValue("mediaUrl")) {
-      const { BACKEND_URL } = process.env;
+      const { BACKEND_URL, PROXY_PORT } = process.env;
       const value = this.getDataValue("mediaUrl");
-      return `${BACKEND_URL}:${process.env.PROXY_PORT}/public/${value}`;
+      const port = PROXY_PORT ? `:${PROXY_PORT}` : "";
+      return `${BACKEND_URL}${port}/public/${value}`;
     }
     return null;
   }
