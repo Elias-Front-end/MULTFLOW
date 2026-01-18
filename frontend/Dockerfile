@@ -3,6 +3,8 @@ FROM node:16-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+# Garantir compatibilidade com Node 16 instalando sass (Dart Sass)
+RUN npm install sass
 COPY . .
 
 # Argumentos de build que podem ser passados pelo Easypanel

@@ -49,7 +49,7 @@ module.exports = function (ctx) {
         VUE_URL_API: process.env.VUE_URL_API,
         VUE_FACEBOOK_APP_ID: process.env.VUE_FACEBOOK_APP_ID
       },
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
 
       // transpile: false,
 

@@ -8,9 +8,13 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "build": "quasar build",
+    "start": "serve -s dist/spa -p 80"
   },
   "dependencies": {
+    "serve": "^14.2.0",
+    "sass": "^1.62.1",
     "@quasar/extras": "^1.15.6",
     "apexcharts": "^3.32.0",
     "axios": "^0.18.1",
