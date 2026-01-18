@@ -3,9 +3,9 @@ FROM node:18-bookworm-slim AS global-deps-stage
 WORKDIR /app
 
 RUN apt-get update \
-  && apt-get install -y wget gnupg nano ffmpeg=7:5.1.4-0+deb12u1 \
-  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-  && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+  && apt-get install -y wget gnupg nano ffmpeg \
+  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-linux-signing-key.gpg \
+  && sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
   && apt-get update \
   && apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
   --no-install-recommends \
@@ -29,6 +29,5 @@ ENTRYPOINT ["npm", "run", "dev:server"]
 
 FROM build-stage AS production-stage
 ENV NODE_ENV=production
-COPY docker-entrypoint.sh .
 RUN chmod +x docker-entrypoint.sh
 ENTRYPOINT ["./docker-entrypoint.sh"]
