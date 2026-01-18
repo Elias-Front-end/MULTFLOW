@@ -51,6 +51,18 @@ module.exports = function (ctx) {
       },
       vueRouterMode: 'history', // available values: 'hash', 'history'
 
+      // Suppress Sass deprecation warnings (especially for Quasar v1 + Dart Sass)
+      sassLoaderOptions: {
+        sassOptions: {
+          quietDeps: true
+        }
+      },
+      scssLoaderOptions: {
+        sassOptions: {
+          quietDeps: true
+        }
+      },
+
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
