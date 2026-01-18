@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && quasar dev",
     "build": "quasar build",
     "start": "serve -s dist/spa -p 80"
   },
